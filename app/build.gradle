@@ -1,6 +1,8 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -65,4 +67,12 @@ dependencies {
 
     // logcat
     implementation 'com.squareup.logcat:logcat:0.1'
+
+    // Hilt
+    implementation "com.google.dagger:hilt-android:2.45"
+    kapt "com.google.dagger:hilt-compiler:2.45"
+}
+
+kapt {
+    correctErrorTypes = true
 }
