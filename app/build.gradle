@@ -71,6 +71,11 @@ dependencies {
     // Hilt
     implementation "com.google.dagger:hilt-android:2.45"
     kapt "com.google.dagger:hilt-compiler:2.45"
+
+    // Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.10")
 }
 
 kapt {
