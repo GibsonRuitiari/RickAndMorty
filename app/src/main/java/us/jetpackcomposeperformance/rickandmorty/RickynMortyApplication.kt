@@ -7,10 +7,8 @@ import logcat.LogPriority
 
 @HiltAndroidApp
 class RickynMortyApplication: Application() {
-
   override fun onCreate() {
     super.onCreate()
-
     AndroidLogcatLogger.installOnDebuggableApp(this, minPriority = LogPriority.DEBUG)
   }
 }
