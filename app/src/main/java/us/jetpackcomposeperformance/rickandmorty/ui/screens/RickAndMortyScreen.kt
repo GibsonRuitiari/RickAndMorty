@@ -1,26 +1,11 @@
 package us.jetpackcomposeperformance.rickandmorty.ui.screens
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.systemBars
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Button
-import androidx.compose.material.CircularProgressIndicator
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -100,8 +85,8 @@ fun RickAndMortyEmptyScreen(modifier: Modifier = Modifier, onEvent: (RickAndMort
 @Composable
 fun RickAndMortyView(modifier: Modifier = Modifier, characters: List<CharacterDomainModel>) {
     Scaffold(modifier = modifier
-      .fillMaxSize()
-      .padding(WindowInsets.systemBars.asPaddingValues()), topBar = {
+        .fillMaxSize()
+        .padding(WindowInsets.systemBars.asPaddingValues()), topBar = {
         RickAndMortyAppBar()
     }) {
         LazyVerticalGrid(columns = GridCells.Adaptive(150.dp),
@@ -132,8 +117,8 @@ fun RickAndMortyComponent(
         AsyncImage(
             model = characterDomainModel.image,
             contentDescription = null, modifier = Modifier
-            .size(150.dp, 250.dp)
-            .clip(RoundedCornerShape(4.dp))
+                .size(150.dp, 250.dp)
+                .clip(RoundedCornerShape(4.dp))
         )
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = characterDomainModel.name, textAlign = TextAlign.Center)

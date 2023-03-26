@@ -8,7 +8,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import us.jetpackcomposeperformance.rickandmorty.domain.models.CharacterResult
 import us.jetpackcomposeperformance.rickandmorty.domain.repository.CharacterRepository
@@ -30,9 +29,6 @@ class RickAndMortyViewModel @Inject constructor(private val characterRepository:
     private fun loadCharactersFromApi() {
         viewModelScope.launch {
             characterRepository.getCharacters()
-                .onStart {
-                    uiState.value = RickAndMortyState.Loading
-                }
                 .catch { ex ->
                     if (ex !is CancellationException) {
                         uiState.value =
@@ -40,7 +36,7 @@ class RickAndMortyViewModel @Inject constructor(private val characterRepository:
                     }
                 }.collect {
                     when (it) {
-                        is CharacterResult.Data -> uiState.value = RickAndMortyState.Data(it.data)
+                        is CharacterResult.Data -> uiState.value =  RickAndMortyState.Data(it.data)
                         is CharacterResult.Empty -> uiState.value =
                             RickAndMortyState.Data.DefaultState
                         is CharacterResult.Error -> uiState.value =
@@ -51,6 +47,7 @@ class RickAndMortyViewModel @Inject constructor(private val characterRepository:
     }
 
     fun sendEvent(uiEvent: RickAndMortyEvents) {
+        println("receiveing event ${uiEvent.toString()}")
         uiEvents.tryEmit(uiEvent)
     }
 
