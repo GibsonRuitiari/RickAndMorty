@@ -12,7 +12,7 @@ sealed interface RickAndMortyState{
     @JvmInline
     value class Error(val errorMessage:String):RickAndMortyState
 }
-sealed interface RickAndMortyEvents{
+sealed interface    RickAndMortyEvents{
     object LoadCharacters:RickAndMortyEvents
     object RetryLoadingCharacters:RickAndMortyEvents
 }
