@@ -9,7 +9,7 @@ import us.jetpackcomposeperformance.rickandmorty.data.repository.CharacterReposi
 import us.jetpackcomposeperformance.rickandmorty.domain.repository.CharacterRepository
 
 @Module
-@InstallIn(ActivityComponent::class)
+@InstallIn(SingletonComponent::class)
 abstract class DomainModules {
   @Binds
   abstract fun provideMoviesRepository(characterRepositoryImpl: CharacterRepositoryImpl): CharacterRepository
